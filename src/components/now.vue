@@ -1,3 +1,5 @@
+Vue.component("now",{
+`
 <template>
   <div>
     <section id="home-display">
@@ -6,25 +8,26 @@
       <br>
       <div class="center-div">
         <div class="center-div-inline">
-          <movieCard v-for="(movie,index) in movies" :key="movie.path" :movie="movie" v-if = "index < 9"></movieCard>
+          <movies :movies="movies" :index="index"></movies>
         </div>
       </div>
     </section>
   </div>
 </template>
-
+`
 <script>
-  import movieCard from './movieCard.vue';
+  import movies from './movies';
 
   export default{
   components: {
-    movieCard
+    movies
   },
   name: 'now',
   data(){
     return{
       words:["joker","jaws","race","mission","hack"],
-      movies:{}
+      movies:{},
+      index:9
     }
   },
   created(){

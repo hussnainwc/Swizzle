@@ -1,3 +1,5 @@
+Vue.component("movie",{
+`
 <template>
   <div>
     <section v-center>
@@ -30,8 +32,14 @@
       <br>
       <br>
       <br>
-      <div v-if="path!= ['/' || '/soon']" v-center>
+      <div v-if="path == '/now'" v-center>
         <button class="button" type="button" name="button" value="Book Ticket">BOOK TICKET</button>
+      </div>
+      <div v-else-if="path == '/soon'" v-center>
+        <button class="button" type="button" name="button" value="">BOOK AHEAD</button>
+      </div>
+      <div v-else v-center>
+        <button :class="{ 'red': path == '/' }" class="button" type="button" name="button" value="">SOLD</button>
       </div>
       <br>
       <br>
@@ -40,7 +48,7 @@
     </section>
   </div>
 </template>
-
+`
 <script>
 export default {
   name: 'movie',
@@ -106,6 +114,10 @@ export default {
 .button:hover{
   background-color: rgba(255,255,255,0.4);
   color:#A5FFEE;
+}
+
+.red{
+  background-color:red !important;
 }
 
 </style>

@@ -1,3 +1,5 @@
+Vue.component("movieCard",{
+`
 <template>
   <div @click="Movie()" class="clickable container center-div-inline">
     <span class="tittle">{{this.tittle}}</span>
@@ -6,7 +8,7 @@
     <img class="poster" :src="getImage()" alt="Poster">
   </div>
 </template>
-
+`
 <script>
 
 export default {

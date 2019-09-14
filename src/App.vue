@@ -7,18 +7,15 @@
 
 <script>
 import navigation from './components/navigation.vue'
-
 export default {
   name: 'app',
   components: {
     navigation
   }
 }
-
 </script>
 
 <style>
-
 html{
   font-family: Helvetica;
   font-size: 100%;
@@ -27,23 +24,18 @@ html{
   padding:0;
   min-height:100%;
 }
-
 body{
   padding:0;
   margin:0;
   background-color:#191919;
 }
-
 .center-div{
   text-align: center;
 }
-
 .center-div-inline{
   display: inline-block;
 }
-
 .clickable:hover{
   cursor: pointer;
 }
-
 </style>

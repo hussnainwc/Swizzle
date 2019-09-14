@@ -1,3 +1,5 @@
+Vue.component("navigation",{
+`
 <template>
   <div>
     <header>
@@ -26,7 +28,7 @@
     </header>
   </div>
 </template>
-
+`
 <script>
 export default {
   name: 'navigation',
