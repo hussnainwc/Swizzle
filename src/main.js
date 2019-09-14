@@ -1,8 +1,7 @@
-import Vue from 'vue'
+import mixin from './mixin.js'
 import App from './App.vue'
 
-Vue.config.productionTip = false
-
 new Vue({
-  render: h => h(App)
+  render: h => h(App),
+  mixins: [mixin],
 }).$mount('#app')
