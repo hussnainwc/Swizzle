@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "watch": "vue-cli-service build --watch --mode development",
     "serve": "serve -s dist",
     "build": "vue-cli-service build",
     "lint": "standard"
@@ -22,8 +23,10 @@
     "jest": "^24.9.0",
     "serve": "^11.1.0",
     "standard": "^14.2.0",
+    "vform": "^1.0.1",
     "vue-template-compiler": "^2.6.10",
-    "vuex": "^3.1.1"
+    "vuex": "^3.1.1",
+    "vuex-persistedstate": "^2.5.4"
   },
   "postcss": {
     "plugins": {
