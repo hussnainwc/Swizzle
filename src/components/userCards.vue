@@ -27,7 +27,7 @@ export default {
   },
   created(){
     let Card = this.$store.getters.getCard;
-    if(Card == undefined){
+    if(Card.number == ""){
       this.hasCard = false;
     }
     else{
@@ -39,6 +39,7 @@ export default {
       if(this.card.postalCode != ""){
         if(!this.hasCard){
           this.$store.commit('setCard',this.card);
+          Toast.fire({type: 'success',title: 'CARD ADDED'})
         }
         else{
           Swal.fire({
@@ -54,6 +55,7 @@ export default {
           .then((result) => {
             if (result.value) {
               this.$store.commit('setCard',this.card)
+              Toast.fire({type: 'success',title: 'CARD ADDED'})
             }
           })
         }

@@ -5,4 +5,9 @@ import App from './App.vue';
 new Vue({
   render: h => h(App),
   mixins: [Mixin],
+  data(){
+    return{
+      tickets:""
+    }
+  }
 }).$mount('#app')
