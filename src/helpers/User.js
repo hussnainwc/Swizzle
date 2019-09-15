@@ -25,11 +25,16 @@ class User{
 
   update(user,password){
 
+    var reservations = Storage.getReservation();
+    Storage.deleteReservation();
+
     if (this.loggedIn()){
       Storage.empty();
     }
 
     Storage.store(user,password);
+
+    Storage.saveReservation(reservations);
 
     return true;
   }
@@ -44,6 +49,50 @@ class User{
 
     return number.substr(0,5) + "XXXX " + "XXXX " + number.substr(15,19);
 
+  }
+
+  makeReservation(movie,tickets){
+
+    let reservation = new Object();
+    reservation.movie = movie;
+    reservation.tickets = tickets;
+
+    var hasReservation = this.getReservation();
+
+    if (hasReservation != undefined){
+      var currentReservations = [];
+      Object.keys(hasReservation).forEach((reservation) =>{
+        currentReservations.push(hasReservation[reservation]);
+      });
+      currentReservations.push(reservation);
+      Storage.saveReservation(JSON.stringify(currentReservations));
+    }
+    else{
+      var newReservation = [];
+      newReservation.push(reservation);
+      Storage.saveReservation(JSON.stringify(newReservation));
+    }
+
+  }
+
+  getReservation(){
+
+    return JSON.parse(Storage.getReservation());
+
+  }
+
+  deleteReservation(movie){
+
+    var hasReservation = this.getReservation();
+    var currentReservations = [];
+    Object.keys(hasReservation).forEach((reservation) =>{
+      if(hasReservation[reservation].movie.imdbID != movie.imdbID){
+        currentReservations.push(hasReservation[reservation]);
+      }
+    });
+
+    Storage.saveReservation(JSON.stringify(currentReservations));
+    
   }
 
 }

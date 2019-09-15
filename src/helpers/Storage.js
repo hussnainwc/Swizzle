@@ -26,7 +26,27 @@ class Storage {
   }
 
   getUser(){
+
     return sessionStorage.getItem('user');
+
+  }
+
+  saveReservation(reservation){
+
+    localStorage.setItem(this.getUser(),reservation);
+
+  }
+
+  getReservation(){
+
+    return localStorage.getItem(this.getUser());
+
+  }
+
+  deleteReservation(){
+
+    localStorage.removeItem(this.getUser());
+
   }
 
 }
