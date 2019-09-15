@@ -1,18 +1,30 @@
 <template>
   <div id="app">
     <navigation></navigation>
-    <router-view></router-view>
+    <router-view>{{this.greeting}}</router-view>
+    <vue-progress-bar></vue-progress-bar>
   </div>
 </template>
 
 <script>
 import navigation from './components/navigation.vue'
 export default {
+
   name: 'app',
   components: {
     navigation
+  },
+  data(){
+    return{
+      greetings:["WELCOME","HOWDY","GREETINGS","HOW'S IT GOING","FINE DAY"],
+      greeting:''
+    }
+  },
+  created(){
+      this.greeting = this.greetings[Math.floor(Math.random() * (+4 - +0)) + +0];
+    }
   }
-}
+
 </script>
 
 <style lang="scss">
