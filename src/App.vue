@@ -2,17 +2,23 @@
   <div id="app">
     <navigation></navigation>
     <router-view>{{ greeting | catch("GREETINGS")}}</router-view>
+    <br>
+    <br>
+    <br>
     <vue-progress-bar></vue-progress-bar>
+    <foot></foot>
   </div>
 </template>
 
 <script>
 import navigation from './components/navigation.vue'
+import foot from './components/foot.vue'
 export default {
 
   name: 'app',
   components: {
-    navigation
+    navigation,
+    foot
   },
   data(){
     return{

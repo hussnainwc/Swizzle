@@ -44,6 +44,11 @@ const routes=[{
   name:"reservations",
   path:"/reservations",
   component: () => import("@/components/reservations")
+},
+{
+  name:"faq",
+  path:"/faq",
+  component: () => import("@/components/faq")
 }
 ];
 
