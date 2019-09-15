@@ -63,7 +63,6 @@ export default {
       this.user = Storage.getUser();
     },
     userOptions(){
-      console.log("works");
       Swal.fire({
         title: 'HOW CAN WE HELP ?',
         type: 'question',
@@ -75,10 +74,9 @@ export default {
       })
         .then((result) => {
               if (result.value) {
-                console.log("val");
+                this.$router.push({name:'profile'})
               }
               else{
-                console.log("w");
                 this.logout();
               }
             })
@@ -555,7 +553,7 @@ margin:0;
     .container a{
       color:#ffffff;
       text-decoration:none;
-      font-size:10px;
+      font-size:9px;
       font-family:Helvetica,arial,"sans-serif";
       font-weight: bold;
     }

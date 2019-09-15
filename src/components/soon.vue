@@ -3,7 +3,7 @@ Vue.component("soon",{
 <template>
   <div>
     <section id="home-display">
-      <h1 class="overlay">MOST WATCHED MOVIES</h1>
+      <h1 class="overlay" v-once>COMING SOON</h1>
       <br>
       <br>
       <div class="center-div">
