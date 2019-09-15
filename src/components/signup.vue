@@ -21,6 +21,9 @@ Vue.component("signup",{
 </template>
 `
 <script>
+
+import { EventBus } from '../events.js';
+
 export default {
   name: 'signup',
   data(){
@@ -31,7 +34,10 @@ export default {
   },
   methods:{
     signup(){
-      User.signup(this.username,this.password);
+      if(User.signup(this.username,this.password)){
+        EventBus.$emit('authorized',this.username);
+        this.$router.push({name:'/'});
+      }
     }
   }
 }

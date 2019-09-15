@@ -19,12 +19,14 @@ class User{
     }
 
     Storage.store(user,password);
-    
+
     return true;
   }
 
   logout(){
+    
     Storage.empty();
+
   }
 
 }

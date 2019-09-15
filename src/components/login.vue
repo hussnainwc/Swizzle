@@ -15,6 +15,9 @@ Vue.component("login",{
 </template>
 `
 <script>
+
+import { EventBus } from '../events.js';
+
 export default {
   name: 'login',
   data(){
@@ -26,7 +29,8 @@ export default {
   methods:{
     login(){
       if(User.login(this.username,this.password)){
-        console.log("works");
+        EventBus.$emit('authorized',this.username);
+        this.$router.push({name:'/'});
       }
     }
   }

@@ -15,7 +15,14 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+
+@import '~sweetalert2/src/variables';
+
+$swal2-background: #191919;
+
+@import '~sweetalert2/src/sweetalert2';
+
 html{
   font-family: Helvetica;
   font-size: 100%;

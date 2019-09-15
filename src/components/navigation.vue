@@ -20,7 +20,8 @@ Vue.component("navigation",{
             <input v-model="tittle" id="SearchBox" name="SearchBox" autocomplete="off" type="text" placeholder="Search"/>
             </li>
             <li class="search-login-nav-li" style="margin-top:20px;">
-              <router-link to="/auth">SIGN UP</router-link>
+              <router-link v-if="!authorized" to="/auth">SIGN UP</router-link>
+              <router-link v-if="authorized" to="#"><span @click="userOptions()">{{this.user}}</span></router-link>
             </li>
           </ul>
         </nav>
@@ -30,12 +31,25 @@ Vue.component("navigation",{
 </template>
 `
 <script>
+
+import { EventBus } from '../events.js';
+
 export default {
   name: 'navigation',
   data(){
     return{
-      tittle:""
+      tittle:"",
+      user:Storage.getUser(),
+      authorized:User.loggedIn()
     }
+  },
+  mounted(){
+    EventBus.$on('authorized',(user)=>{
+      this.render(user);
+    });
+    EventBus.$on('logout',(user)=>{
+      this.render(user)
+    })
   },
   methods:{
     search(){
@@ -43,6 +57,36 @@ export default {
         .then((result)=>{
           console.log(result);
         });
+    },
+    render(user){
+      this.authorized =  User.loggedIn();
+      this.user = Storage.getUser();
+    },
+    userOptions(){
+      console.log("works");
+      Swal.fire({
+        title: 'HOW CAN WE HELP ?',
+        type: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'MY PROFILE',
+        cancelButtonText: 'LOGOUT'
+      })
+        .then((result) => {
+              if (result.value) {
+                console.log("val");
+              }
+              else{
+                console.log("w");
+                this.logout();
+              }
+            })
+    },
+    logout(){
+      User.logout();
+      EventBus.$emit('logout');
+      this.$router.push({name:'/'})
     }
   }
 }

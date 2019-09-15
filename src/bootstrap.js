@@ -2,7 +2,8 @@ import Vue from 'vue'
 import axios from 'axios'
 import VueRouter from 'vue-router'
 import { Form, HasError, AlertError } from 'vform'
-import Swal from 'sweetalert2/src/sweetalert2.js'
+import VueSweetalert2 from 'vue-sweetalert2';
+import Swal from 'sweetalert2'
 import VueProgressBar from 'vue-progressbar'
 import Vuex from 'vuex'
 import createPersistedState from 'vuex-persistedstate'
@@ -18,12 +19,13 @@ Vue.use(Vuex)
 
 window.createPersistedState = createPersistedState
 
+Vue.use(VueSweetalert2);
 const Toast = Swal.mixin({
   toast: true,
   position: 'top-end',
   showConfirmButton: false,
   timer: 3000
-})
+});
 
 Vue.use(VueProgressBar, {
   color: '#bffaf3',
