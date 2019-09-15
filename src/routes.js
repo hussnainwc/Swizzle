@@ -25,6 +25,26 @@ const routes=[{
   path:"/auth",
   component: () => import("@/components/auth")
 },
+{
+  name:"profile",
+  path:"/profile",
+  component: () => import("@/components/profile")
+},
+{
+  name:"user",
+  path:"/user",
+  component: () => import("@/components/user")
+},
+{
+  name:"userCards",
+  path:"/userCards",
+  component: () => import("@/components/userCards")
+},
+{
+  name:"reservations",
+  path:"/reservations",
+  component: () => import("@/components/reservations")
+}
 ];
 
 const router = new VueRouter({

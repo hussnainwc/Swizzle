@@ -23,9 +23,26 @@ class User{
     return true;
   }
 
+  update(user,password){
+
+    if (this.loggedIn()){
+      Storage.empty();
+    }
+
+    Storage.store(user,password);
+
+    return true;
+  }
+
   logout(){
-    
+
     Storage.empty();
+
+  }
+
+  maskCard(number){
+
+    return number.substr(0,5) + "XXXX " + "XXXX " + number.substr(15,19);
 
   }
 

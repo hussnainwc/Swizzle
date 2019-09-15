@@ -9,19 +9,34 @@ const store = new Vuex.Store({
       rating:"",
       plot:""
     },
-    path:""
+    path:"",
+    card:{
+      brand:"",
+      cvc:"",
+      expiration:"",
+      number:"",
+      postalCode:""
+    },
+    reservations:[]
   },
   plugins: [createPersistedState()],
   mutations: {
-    set(state,movie){
-      state.movie.tittle = movie.Title,
-      state.movie.poster = movie.Poster,
-      state.movie.year = movie.Year,
-      state.movie.rating = movie.Ratings[1].Value,
-      state.movie.plot = movie.Plot
+    set(state,Movie){
+      state.movie.tittle = Movie.Title,
+      state.movie.poster = Movie.Poster,
+      state.movie.year = Movie.Year,
+      state.movie.rating = Movie.Ratings[1].Value,
+      state.movie.plot = Movie.Plot
     },
     setPath(state,Path){
       state.path = Path;
+    },
+    setCard(state,card){
+      state.card.brand = card.brand,
+      state.card.cvc = card.cvc,
+      state.card.expiration = card.expiration,
+      state.card.number = card.number,
+      state.card.postalCode = card.postalCode
     }
   },
   getters: {
@@ -30,6 +45,9 @@ const store = new Vuex.Store({
     },
     getPath(state){
       return state.path;
+    },
+    getCard(state){
+      return state.card;
     }
   }
 })
