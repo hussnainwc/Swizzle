@@ -2,7 +2,7 @@ Vue.component("movieCard",{
 `
 <template>
   <div @click="Movie()" class="clickable container center-div-inline">
-    <span class="tittle">{{this.tittle}}</span>
+    <span class="tittle">{{this.Title}}</span>
     <br>
     <br>
     <img class="poster" :src="getImage()" alt="Poster">
@@ -16,7 +16,7 @@ export default {
   props:['movie'],
   data(){
     return{
-      tittle:this.movie.Title,
+      Title:this.movie.Title,
       movieDetials:{}
     }
   },

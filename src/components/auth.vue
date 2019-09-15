@@ -11,13 +11,11 @@ Vue.component("auth",{
 
  <div v-center>
 
-   <keep-alive>
-   <signup v-if="newUser"></signup>
-   </keep-alive>
-
-   <keep-alive>
-   <login v-if="!newUser"></login>
-   </keep-alive>
+   <transition name="component-fade" mode="out-in">
+     <keep-alive>
+     <component :is="newUser"></component>
+     </keep-alive>
+   </transition>
 
  </div>
 
@@ -36,21 +34,28 @@ Vue.component("auth",{
   name: 'auth',
   data(){
     return{
-      newUser:true
+      newUser:"signup"
     }
   },
   methods:{
     signupForm(){
-      this.newUser = true;
+      this.newUser = "signup";
     },
     loginForm(){
-      this.newUser = false;
+      this.newUser = "login";
     }
   }
 }
 </script>
 
 <style scoped>
+
+.component-fade-enter-active, .component-fade-leave-active {
+  transition: opacity.3s ease;
+}
+.component-fade-enter, .component-fade-leave-to{
+  opacity: 0;
+}
 
 @media only screen and (max-width:1150px) {
   .top{

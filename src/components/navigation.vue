@@ -40,7 +40,8 @@ export default {
     return{
       tittle:"",
       user:Storage.getUser(),
-      authorized:User.loggedIn()
+      authorized:User.loggedIn(),
+      movieDetials:{}
     }
   },
   mounted(){
@@ -53,10 +54,26 @@ export default {
   },
   methods:{
     search(){
-     axios.get("http://www.omdbapi.com/?t="+ this.tittle.toLowerCase() +"&apikey=a921d199")
-        .then((result)=>{
-          console.log(result);
-        });
+        axios.get("http://www.omdbapi.com/?t="+ this.tittle.toLowerCase() +"&apikey=a921d199")
+        .then((response)=>{
+          if(response.data.Error == "Movie not found!"){
+            Swal.fire({
+              title: 'MOVIE NOT FOUND',
+              type: 'error',
+              showCancelButton: false,
+              confirmButtonColor: '#3085d6',
+              confirmButtonText: 'OK'
+            })
+            this.tittle = ""
+          }
+          else{
+            this.tittle = ""
+            this.movieDetials =  response.data;
+            this.$store.commit('setPath','/navigation');
+            this.$store.commit('set',this.movieDetials);
+            this.$router.push({name:'movie'})
+          }
+        })
     },
     render(user){
       this.authorized =  User.loggedIn();
@@ -77,7 +94,9 @@ export default {
                 this.$router.push({name:'profile'})
               }
               else{
-                this.logout();
+                if(result.dismiss == "cancel"){
+                  this.logout();
+                }
               }
             })
     },

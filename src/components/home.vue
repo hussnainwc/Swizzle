@@ -59,16 +59,6 @@ Vue.component("home",{
   text-align: center;
 }
 
-.poster{
-  margin:20px 50px 50px 50px;
-  height:auto;
-  width:31%;
-}
-
-.hide2{
-  display:none;
-}
-
 .overlay{
   margin-bottom:50px;
   color:#ffffff;
@@ -89,25 +79,6 @@ Vue.component("home",{
   }
 }
 
-.poster1{
-  color:#ffffff;
-  text-align:center;
-  margin:0 180px 0 180px;
-}
-
-@media only screen and (min-width:1700px) {
-
-  .poster{
-    margin:0 15px 15px 15px;
-    height:auto;
-    width:31%;
-  }
-
-  .hide{
-    display:none;
-  }
-}
-
 @media only screen and (max-width:1326px) {
 
   #home-display{
@@ -117,29 +88,6 @@ Vue.component("home",{
     text-align: center;
   }
 
-  .poster{
-    text-align: center;
-    margin:50px;
-    height:auto;
-    width:30%;
-    display: inline-block;
-  }
-
-  .overlay{
-    color:#ffffff;
-    font-size:30px;
-    text-align: center;
-    -webkit-animation: overlay 1s ease-in-out infinite alternate;
-    -moz-animation: overlay 1s ease-in-out infinite alternate;
-    animation: overlay 1s ease-in-out infinite alternate;
-  }
-
-  .poster1{
-    color:#ffffff;
-    text-align:center;
-    font-size:20px;
-    margin:0 150px 0 150px;
-  }
 }
 
 @media only screen and (max-width:1119px) {
@@ -151,12 +99,6 @@ Vue.component("home",{
     text-align: center;
   }
 
-  .poster1{
-    color:#ffffff;
-    text-align:center;
-    font-size:20px;
-    margin:0 100px 0 100px;
-  }
 }
 
 </style>

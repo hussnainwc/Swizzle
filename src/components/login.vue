@@ -69,7 +69,6 @@ export default {
   border: 1px solid #ffffff;
   color: #A5FFEE;
   padding:5px;
-  font-size: 30px;
   cursor: pointer;
   outline: none;
   background-color: #A5A5A5;

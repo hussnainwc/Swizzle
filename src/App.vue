@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <navigation></navigation>
-    <router-view>{{this.greeting}}</router-view>
+    <router-view>{{ greeting | catch("GREETINGS")}}</router-view>
     <vue-progress-bar></vue-progress-bar>
   </div>
 </template>
@@ -16,12 +16,13 @@ export default {
   },
   data(){
     return{
-      greetings:["WELCOME","HOWDY","GREETINGS","HOW'S IT GOING","FINE DAY"],
-      greeting:''
+      greetings:["WELCOME","HOWDY","GREETINGS","HOW'S IT GOING","FINE DAY"]
     }
   },
-  created(){
-      this.greeting = this.greetings[Math.floor(Math.random() * (+4 - +0)) + +0];
+  computed:{
+      greeting(){
+        return this.greetings[Math.floor(Math.random() * (+4 - +0)) + +0];
+      }
     }
   }
 
@@ -48,6 +49,11 @@ body{
   margin:0;
   background-color:#191919;
 }
+
+a {
+    outline: none;
+}
+
 .center-div{
   text-align: center;
 }
