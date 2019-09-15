@@ -19,7 +19,12 @@ const routes=[{
   name:"movie",
   path:"/movie",
   component: () => import("@/components/movie")
-}
+},
+{
+  name:"auth",
+  path:"/auth",
+  component: () => import("@/components/auth")
+},
 ];
 
 const router = new VueRouter({

@@ -20,7 +20,7 @@ Vue.component("navigation",{
             <input v-model="tittle" id="SearchBox" name="SearchBox" autocomplete="off" type="text" placeholder="Search"/>
             </li>
             <li class="search-login-nav-li" style="margin-top:20px;">
-              <router-link to="#">SIGN UP</router-link>
+              <router-link to="/auth">SIGN UP</router-link>
             </li>
           </ul>
         </nav>

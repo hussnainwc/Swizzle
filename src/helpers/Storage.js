@@ -11,8 +11,8 @@ class Storage {
   }
 
   check(user,password){
-    User = sessionStorage.getItem('user');
-    Password = sessionStorage.getItem('password');
+    let User = sessionStorage.getItem('user');
+    let Password = sessionStorage.getItem('password');
 
     if(user === User && btoa(password) === Password){
       return true;

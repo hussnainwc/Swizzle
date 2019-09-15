@@ -38,4 +38,12 @@ body{
 .clickable:hover{
   cursor: pointer;
 }
+
+.white{
+  color:white;
+}
+
+.pointer{
+  cursor: pointer;
+}
 </style>
