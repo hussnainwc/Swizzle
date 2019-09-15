@@ -20,7 +20,7 @@ Vue.component("now",{
 
   export default{
   components: {
-    movies
+    movies: () => import("./movies")
   },
   name: 'now',
   data(){

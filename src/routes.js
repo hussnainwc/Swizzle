@@ -1,23 +1,24 @@
 import VueRouter from "vue-router";
 
 const routes=[{
+  name:"/",
   path:"/",
-  component:require("./components/home").default
+  component: () => import("@/components/home")
 },
 {
   name:"now",
   path:"/now",
-  component:require("./components/now").default
+  component: () => import("@/components/now")
 },
 {
   name:"soon",
   path:"/soon",
-  component:require("./components/soon").default
+  component: () => import("@/components/soon")
 },
 {
   name:"movie",
   path:"/movie",
-  component:require("./components/movie").default
+  component: () => import("@/components/movie")
 }
 ];
 
