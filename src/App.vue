@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <navigation></navigation> <!-- Navigation component !-->
-    <router-view></router-view> <!-- Vue-router !-->
+    <router-view>{{ greeting | catch("GREETINGS")}}</router-view> <!-- Vue-router !-->
   </div>
 </template>
 
