@@ -12,7 +12,7 @@ Enter the following commands:
 
 npm Install
 
-npm rum build
+npm run build
 
 npm run serve
 
