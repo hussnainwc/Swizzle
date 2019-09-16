@@ -2,8 +2,8 @@ Vue.component("soon",{
 `
 <template>
   <div>
-    <section id="home-display">
-      <h1 class="overlay">MOST WATCHED MOVIES</h1>
+    <section id="soon-display">
+      <h1 class="overlay" v-once>COMING SOON</h1>
       <br>
       <br>
       <div class="center-div">
@@ -52,21 +52,11 @@ Vue.component("soon",{
 
 <style scoped>
 
-#home-display{
+#soon-display{
   margin: 50px auto auto auto;
   width:80%;
   min-height:500px;
   text-align: center;
-}
-
-.poster{
-  margin:20px 50px 50px 50px;
-  height:auto;
-  width:31%;
-}
-
-.hide2{
-  display:none;
 }
 
 .overlay{
@@ -89,74 +79,26 @@ Vue.component("soon",{
   }
 }
 
-.poster1{
-  color:#ffffff;
-  text-align:center;
-  margin:0 180px 0 180px;
-}
-
-@media only screen and (min-width:1700px) {
-
-  .poster{
-    margin:0 15px 15px 15px;
-    height:auto;
-    width:31%;
-  }
-
-  .hide{
-    display:none;
-  }
-}
-
 @media only screen and (max-width:1326px) {
 
-  #home-display{
+  #soon-display{
     margin: 50px auto auto auto;
     width:80%;
     min-height:500px;
     text-align: center;
   }
 
-  .poster{
-    text-align: center;
-    margin:50px;
-    height:auto;
-    width:30%;
-    display: inline-block;
-  }
-
-  .overlay{
-    color:#ffffff;
-    font-size:30px;
-    text-align: center;
-    -webkit-animation: overlay 1s ease-in-out infinite alternate;
-    -moz-animation: overlay 1s ease-in-out infinite alternate;
-    animation: overlay 1s ease-in-out infinite alternate;
-  }
-
-  .poster1{
-    color:#ffffff;
-    text-align:center;
-    font-size:20px;
-    margin:0 150px 0 150px;
-  }
 }
 
 @media only screen and (max-width:1119px) {
 
-  #home-display{
+  #soon-display{
     margin: 100px auto auto auto;
     width:80%;
     min-height:500px;
     text-align: center;
   }
 
-  .poster1{
-    color:#ffffff;
-    text-align:center;
-    font-size:20px;
-    margin:0 100px 0 100px;
-  }
 }
 
 </style>

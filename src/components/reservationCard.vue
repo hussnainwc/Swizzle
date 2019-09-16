@@ -1,4 +1,4 @@
-Vue.component("movieCard",{
+Vue.component("reservationCard",{
 `
 <template>
   <div @click="Movie()" class="clickable container center-div-inline">
@@ -12,25 +12,26 @@ Vue.component("movieCard",{
 <script>
 
 export default {
-  name: 'movieCard',
+  name: 'reservationCard',
   props:['movie'],
   data(){
     return{
-      Title:this.movie.Title,
+      Title:this.movie.movie.Title,
       movieDetials:{}
     }
   },
   methods:{
     Movie(){
-      axios.get("http://www.omdbapi.com/?i="+ this.movie.imdbID +"&apikey=a921d199")
+      axios.get("http://www.omdbapi.com/?i="+ this.movie.movie.imdbID +"&apikey=a921d199")
        .then((response)=>{
          this.movieDetials =  response.data
          this.$store.commit('set',this.movieDetials);
+         this.$root.$data.tickets = this.movie.tickets;
        });
-      this.$router.push({name:'movie'})
+      this.$router.push({name:'movie'});
     },
     getImage(){
-      return this.movie.Poster;
+      return this.movie.movie.Poster;
     }
   }
 }
@@ -41,7 +42,7 @@ export default {
 .container{
   margin:50px 15px 50px 15px;
   height:500px;
-  width:30%;
+  width:100%;
   float:left;
 }
 

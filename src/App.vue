@@ -7,12 +7,26 @@
 
 <script>
 import navigation from './components/navigation.vue'
+import foot from './components/foot.vue'
 export default {
+
   name: 'app',
   components: {
-    navigation
+    navigation,
+    foot
+  },
+  data(){
+    return{
+      greetings:["WELCOME","HOWDY","GREETINGS","HOW'S IT GOING","FINE DAY"]
+    }
+  },
+  computed:{
+      greeting(){
+        return this.greetings[Math.floor(Math.random() * (+4 - +0)) + +0];
+      }
+    }
   }
-}
+
 </script>
 
 <style lang="scss"> // SCSS support added
@@ -37,6 +51,11 @@ body{
   margin:0;
   background-color:#191919;
 }
+
+a {
+    outline: none;
+}
+
 .center-div{
   text-align: center;
 }

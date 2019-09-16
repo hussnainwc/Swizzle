@@ -1,50 +1,41 @@
-Vue.component("now",{
+Vue.component("reservations",{
 `
 <template>
   <div>
-    <section id="now-display">
-      <h1 class="overlay" v-once>NOW SHOWING</h1>
-      <br>
-      <br>
-      <div class="center-div">
-        <div class="center-div-inline">
-          <movies :movies="movies" :index="index"></movies>
-        </div>
+    <section id="reservation-display">
+    <h1 class="overlay" v-once>RESERVATIONS</h1>
+    <br>
+    <br>
+    <div class="center-div">
+      <div class="center-div-inline">
+      <reservationCard v-for="(movie,index) in movies" :key="movie.path" :movie="movie"></reservationCard>
       </div>
+    </div>
     </section>
   </div>
 </template>
 `
 <script>
-  import movies from './movies';
 
-  export default{
-  components: {
-    movies: () => import("./movies")
+import reservationCard from "./reservationCard"
+
+export default {
+  name: 'reservations',
+  components:{
+    reservationCard
   },
-  name: 'now',
   data(){
     return{
-      words:["joker","jaws","race","mission","hack"],
-      movies:{},
-      index:9
+      movies:{}
     }
   },
   created(){
-    this.displayMovies();
+    this.displayReservations()
   },
   methods:{
-    displayMovies(){
-      axios.get(" https://movie-database-imdb-alternative.p.rapidapi.com/?s="+ this.getString(),
-      {headers:{"x-rapidapi-host": "movie-database-imdb-alternative.p.rapidapi.com",
-        "x-rapidapi-key": "15c0216cc7msh50655ec99b3a1a4p1f3216jsndbd872e5ef15"}})
-        .then((response)=>{
-          this.$store.commit('setPath',this.$route.path);
-          this.movies = response.data.Search;
-        });
-    },
-    getString(){
-      return this.words[Math.floor(Math.random() * (+4 - +0)) + +0];
+    displayReservations(){
+      this.movies = User.getReservation();
+      this.$store.commit('setPath',this.$route.path);
     }
   }
 }
@@ -52,7 +43,7 @@ Vue.component("now",{
 
 <style scoped>
 
-#now-display{
+#reservation-display{
   margin: 50px auto auto auto;
   width:80%;
   min-height:500px;
@@ -81,7 +72,7 @@ Vue.component("now",{
 
 @media only screen and (max-width:1326px) {
 
-  #now-display{
+  #reservation-display{
     margin: 50px auto auto auto;
     width:80%;
     min-height:500px;
@@ -92,7 +83,7 @@ Vue.component("now",{
 
 @media only screen and (max-width:1119px) {
 
-  #now-display{
+  #reservation-display{
     margin: 100px auto auto auto;
     width:80%;
     min-height:500px;

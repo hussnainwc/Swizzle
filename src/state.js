@@ -3,13 +3,22 @@ require('./bootstrap.js')
 const store = new Vuex.Store({
   state: {
     movie:{
-      tittle:"",
-      poster:"",
-      year:"",
-      rating:"",
-      plot:""
+      Title:"",
+      Poster:"",
+      Year:"",
+      Rating:"",
+      Plot:"",
+      imdbID:""
     },
-    path:""
+    path:"",
+    card:{
+      brand:"",
+      cvc:"",
+      expiration:"",
+      number:"",
+      postalCode:""
+    },
+    reservations:[]
   },
   plugins: [createPersistedState()],
   mutations: {
@@ -33,6 +42,13 @@ const store = new Vuex.Store({
     */
     setPath(state,Path){
       state.path = Path;
+    },
+    setCard(state,card){
+      state.card.brand = card.brand,
+      state.card.cvc = card.cvc,
+      state.card.expiration = card.expiration,
+      state.card.number = card.number,
+      state.card.postalCode = card.postalCode
     }
   },
   getters: {
@@ -53,6 +69,9 @@ const store = new Vuex.Store({
     */
     getPath(state){
       return state.path;
+    },
+    getCard(state){
+      return state.card;
     }
   }
 })

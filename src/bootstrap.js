@@ -19,35 +19,29 @@ Vue.config.productionTip = false
 
 window.Vuex = Vuex
 Vue.use(Vuex)
-
+window.Vuex = Vuex
 window.createPersistedState = createPersistedState
 
+import VueSweetalert2 from 'vue-sweetalert2';
+import Swal from 'sweetalert2'
 Vue.use(VueSweetalert2);
+window.Swal = Swal
+window.Toast = Toast
 const Toast = Swal.mixin({
   toast: true,
   position: 'top-end',
   showConfirmButton: false,
   timer: 3000
-});
+  });
 
+import VueProgressBar from 'vue-progressbar'
 Vue.use(VueProgressBar, {
   color: '#bffaf3',
   failedColor: 'red',
   height: '3px'
 })
 
-window.Form = Form
-Vue.component(HasError.name, HasError)
-Vue.component(AlertError.name, AlertError)
-
-window.Vue = Vue
-
-Vue.use(VueRouter)
-
-window.axios = axios
-
-window.Swal = Swal
-window.Toast = Toast
-
+import User from './helpers/User'
+import Storage from './helpers/Storage'
 window.Storage = Storage
 window.User = User
