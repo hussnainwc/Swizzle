@@ -3,7 +3,8 @@ Vue.component("user",{
 <template>
   <div v-center>
 
-    <form @submit.prevent="update">
+    <form @submit.prevent="update"> <!-- Event modifier -->
+      <!-- V-model for two way data binding for forms -->
       <br>
       <input class="update-input" type="text" name="username" autocomplete="off" v-model="username" placeholder="USER NAME"/>
       <br>
@@ -17,7 +18,7 @@ Vue.component("user",{
 `
 <script>
 
-import { EventBus } from '../events.js';
+import { EventBus } from '../events.js'; // EventBus to emit events globally
 
 export default {
   name: 'user',
@@ -28,9 +29,16 @@ export default {
     }
   },
   created(){
-    this.username = Storage.getUser();
+    this.username = Storage.getUser(); // Get user from the storage
   },
   methods:{
+    /**
+      * Checks if password field is empty
+      * If validation passes authorize and emit an event
+      * Fires a notification if the update is successfull
+      * @param {}
+      * @return {null}
+      */
     update(){
       if(this.password != ''){
         this.$Progress.start();

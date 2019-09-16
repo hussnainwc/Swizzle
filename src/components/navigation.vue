@@ -4,6 +4,7 @@ Vue.component("navigation",{
   <div>
     <header>
       <div class="container">
+        <!-- Router link acts as an a tag which directs user to linked path -->
         <div id="logo"><router-link to="/"><img src="../assets/swizzle.png" alt="LOGO"></router-link></div>
         <nav id="showing-nav">
           <ul class="showing-nav-ul">
@@ -20,8 +21,9 @@ Vue.component("navigation",{
             <input v-model="tittle" id="SearchBox" name="SearchBox" autocomplete="off" type="text" placeholder="Search"/>
             </li>
             <li class="search-login-nav-li" style="margin-top:20px;">
+              <!-- Conditional rendering based on autherization -->
               <router-link v-if="!authorized" to="/auth">SIGN UP</router-link>
-              <router-link v-if="authorized" to="#"><span @click="userOptions()">{{this.user}}</span></router-link>
+              <router-link v-else to="#"><span @click="userOptions()">{{this.user}}</span></router-link>
             </li>
           </ul>
         </nav>
@@ -32,27 +34,33 @@ Vue.component("navigation",{
 `
 <script>
 
-import { EventBus } from '../events.js';
+import { EventBus } from '../events.js'; // EventBus to listen to emitted events
 
 export default {
   name: 'navigation',
   data(){
     return{
       tittle:"",
-      user:Storage.getUser(),
-      authorized:User.loggedIn(),
+      user:Storage.getUser(), // Get user from storage
+      authorized:User.loggedIn(), // CHecks if the user is authenticated
       movieDetials:{}
     }
   },
   mounted(){
     EventBus.$on('authorized',(user)=>{
-      this.render(user);
+      this.render(user); // Used to rerender the navigation component
     });
     EventBus.$on('logout',(user)=>{
-      this.render(user)
+      this.render(user) // Used to rerender the navigation component
     })
   },
   methods:{
+    /**
+      * Queries end point with searched word from the user and assigns response to movieDetails object
+      * Commits movieDetails and path to the store
+      * @param {}
+      * @return {null}
+      */
     search(){
         axios.get("http://www.omdbapi.com/?t="+ this.tittle.toLowerCase() +"&apikey=a921d199")
         .then((response)=>{
@@ -75,10 +83,20 @@ export default {
           }
         })
     },
+    /**
+      * Rerenders navigation bar
+      * @param {user}
+      * @return {null}
+      */
     render(user){
       this.authorized =  User.loggedIn();
       this.user = Storage.getUser();
     },
+    /**
+      * Pop up modal which asks users if they want to go to profile or log out
+      * @param {}
+      * @return {null}
+      */
     userOptions(){
       Swal.fire({
         title: 'HOW CAN WE HELP ?',
@@ -100,6 +118,11 @@ export default {
               }
             })
     },
+    /**
+      * Logs out the user
+      * @param {}
+      * @return {null}
+      */
     logout(){
       User.logout();
       EventBus.$emit('logout');

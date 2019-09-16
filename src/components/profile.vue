@@ -3,9 +3,15 @@ Vue.component("profile",{
 <template>
   <div v-center>
     <br>
+    <!-- V-color to set element color -->
+    <!-- {{ }} Syntax to call data directly -->
+    <!-- Catch filter used as fall back in case something doesn't load -->
+    <!-- Capitalize function used to capitalize the movie title -->
+    <!-- Slots passed in app.vue are inserted here as this the only slot in the entire app -->
     <h1 v-color="'white'"><slot>HELLO</slot> {{this.user | capitalize | catch("User") }}</h1>
     <br>
     <br>
+    <!-- Router link acts as an a tag which directs user to linked path -->
     <router-link to="/user"><button class="profile-button" type="submit" name="submit" value="EDIT PROFILE">EDIT PROFILE</button></router-link>
     <br>
     <br>
@@ -24,7 +30,7 @@ export default {
   name: 'profile',
   data(){
     return{
-      user:Storage.getUser()
+      user:Storage.getUser() // Get user from storage
     }
   }
 }

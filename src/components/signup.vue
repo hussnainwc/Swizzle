@@ -3,7 +3,8 @@ Vue.component("signup",{
 <template>
   <div v-center>
 
-    <form @submit.prevent="signup">
+    <form @submit.prevent="signup"> <!-- Event modifier -->
+      <!-- V-model for two way data binding for forms -->
       <input class="signup-input" type="text" name="username" autocomplete="off" v-model="username" placeholder="USER NAME"/>
       <br>
       <input class="signup-input" type="password" name="password" autocomplete="off" v-model="password" placeholder="PASSWORD"/>
@@ -22,7 +23,7 @@ Vue.component("signup",{
 `
 <script>
 
-import { EventBus } from '../events.js';
+import { EventBus } from '../events.js'; // EventBus to emit events globally
 
 export default {
   name: 'signup',
@@ -33,23 +34,31 @@ export default {
     }
   },
   methods:{
+    /**
+      * Checks if password field is empty
+      * If validation passes authorize and emit an event
+      * Pushes user to home page
+      * Fires a notification if the Sign up is successfull
+      * @param {}
+      * @return {null}
+      */
     signup(){
-            if(this.password != ''){
-      this.$Progress.start();
-      if(User.signup(this.username,this.password)){
-        EventBus.$emit('authorized',this.username);
-        this.$router.push({name:'/'});
-        this.$Progress.finish();
-        Toast.fire({type: 'success',title: 'Sign up Succesful'})
+      if(this.password != ''){
+        this.$Progress.start();
+        if(User.signup(this.username,this.password)){
+          EventBus.$emit('authorized',this.username);
+          this.$router.push({name:'/'});
+          this.$Progress.finish();
+          Toast.fire({type: 'success',title: 'Sign up Succesful'})
+        }
+        else{
+          this.$Progress.fail();
+          Toast.fire({type: 'error',title: 'Failed to Sign up'})
+        }
       }
       else{
-        this.$Progress.fail();
-        Toast.fire({type: 'error',title: 'Failed to Sign up'})
+        Toast.fire({type: 'error',title: 'Failed to sign up'})
       }
-    }
-    else{
-      Toast.fire({type: 'error',title: 'Failed to sign up'})
-    }
     }
   }
 }

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <navigation></navigation> <!-- Navigation component !-->
-    <router-view>{{ greeting | catch("GREETINGS")}}</router-view> <!-- Vue-router !-->
+    <router-view>{{ greeting | catch("GREETINGS")}}</router-view> <!-- Vue-router {{ Greeting is passed as a slot }} !-->
   </div>
 </template>
 

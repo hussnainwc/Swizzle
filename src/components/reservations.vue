@@ -8,6 +8,7 @@ Vue.component("reservations",{
     <br>
     <div class="center-div">
       <div class="center-div-inline">
+      <!-- List render using v-for  -->
       <reservationCard v-for="(movie,index) in movies" :key="movie.path" :movie="movie"></reservationCard>
       </div>
     </div>
@@ -30,9 +31,15 @@ export default {
     }
   },
   created(){
-    this.displayReservations()
+    this.displayReservations() // Display reservations on component created
   },
   methods:{
+    /**
+      * Gets current user reservations
+      * Commits path to the store
+      * @param {}
+      * @return {null}
+      */
     displayReservations(){
       this.movies = User.getReservation();
       this.$store.commit('setPath',this.$route.path);

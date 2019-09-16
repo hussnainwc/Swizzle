@@ -43,6 +43,12 @@ const store = new Vuex.Store({
     setPath(state,Path){
       state.path = Path;
     },
+
+    /**
+      * Sets the card to be used
+      * @param {state,card}
+      * @return {null}
+      */
     setCard(state,card){
       state.card.brand = card.brand,
       state.card.cvc = card.cvc,
@@ -70,6 +76,12 @@ const store = new Vuex.Store({
     getPath(state){
       return state.path;
     },
+
+    /**
+      * Returns the user's saved card
+      * @param {state}
+      * @return {card}
+      */
     getCard(state){
       return state.card;
     }

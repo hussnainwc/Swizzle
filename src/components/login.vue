@@ -3,7 +3,8 @@ Vue.component("login",{
 <template>
   <div v-center>
 
-    <form @submit.prevent="login">
+    <form @submit.prevent="login"> <!-- Event modifier -->
+      <!-- V-model for two way data binding for forms -->
       <input class="login-input" type="text" name="username" autocomplete="off" v-model="username" placeholder="USER NAME"/>
       <br>
       <input class="login-input" type="password" name="password" autocomplete="off" v-model="password" placeholder="PASSWORD"/>
@@ -16,7 +17,7 @@ Vue.component("login",{
 `
 <script>
 
-import { EventBus } from '../events.js';
+import { EventBus } from '../events.js'; // EventBus to emit events globally
 
 export default {
   name: 'login',
@@ -27,8 +28,16 @@ export default {
     }
   },
   methods:{
+    /**
+      * Checks if the user has valid credentials
+      * If authorized emits an event
+      * Pushes user to home page
+      * Fires a notification if the login is successfull
+      * @param {}
+      * @return {null}
+      */
     login(){
-      this.$Progress.start();
+      this.$Progress.start(); // Progress bar
       if(User.login(this.username,this.password)){
         EventBus.$emit('authorized',this.username);
         this.$router.push({name:'/'});

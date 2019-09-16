@@ -3,8 +3,8 @@ Vue.component("faq",{
 <template>
   <div v-center>
 
-      <button class="faq" @click="this.show_box">Where can i use Swizzle? </button>
-      <div class="filter" v-if="show">
+      <button class="faq" @click="this.show_box">Where can i use Swizzle? </button> <!-- Event handling using short hand rules -->
+      <div class="filter" v-if="show"> <!-- Conditional rendering -->
         <p>Right now Swizzle is partnered with BoxMovies only.
       </p>
       </div>
@@ -56,6 +56,11 @@ Vue.component("faq",{
     }
   },
   methods:{
+    /**
+      * Opens the clicked FAQ component
+      * @param {}
+      * @return {null}
+      */
     show_box(){
         this.show=!this.show;
         return null;
@@ -85,10 +90,6 @@ Vue.component("faq",{
 </script>
 
 <style scoped>
-
-  html{
-    outline: none;
-  }
 
 .faq {
   background-color: black;

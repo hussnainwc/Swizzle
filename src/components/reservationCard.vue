@@ -13,7 +13,7 @@ Vue.component("reservationCard",{
 
 export default {
   name: 'reservationCard',
-  props:['movie'],
+  props:['movie'], // Prop from the parent
   data(){
     return{
       Title:this.movie.movie.Title,
@@ -21,6 +21,12 @@ export default {
     }
   },
   methods:{
+    /**
+      * Queries end point with imdbID from the prop and assigns response to movieDetails object
+      * Commits movieDetails to the store
+      * @param {}
+      * @return {null}
+      */
     Movie(){
       axios.get("http://www.omdbapi.com/?i="+ this.movie.movie.imdbID +"&apikey=a921d199")
        .then((response)=>{
@@ -30,6 +36,11 @@ export default {
        });
       this.$router.push({name:'movie'});
     },
+    /**
+      * Returns the poster of the movie
+      * @param {}
+      * @return {poster}
+      */
     getImage(){
       return this.movie.movie.Poster;
     }

@@ -1,0 +1,42 @@
+Filters
+
+Capitalize -- Capitalizes all letters of the String passed
+Catch -- Acts as a fall back if the data fails to load
+Percent -- Acts as a fall back and returns random rating if movie rating fails to load
+
+Directives
+
+v-color -- To change the color of the element
+v-display -- To change the display style of the element
+v-center -- To center align an element
+v-size -- To change font size of an element
+
+Vue elements used
+
+• Computed Properties and Watchers
+• Class and Style Bindings
+• Conditional Rendering
+• List Rendering
+• Event Handling
+• Form Input Bindings
+• Components Basics
+• Component Registration
+• Props
+• Custom Events
+• Slots
+• Dynamic & Async Components
+• Handling Edge Cases
+• Enter/Leave & List Transitions
+• State Transitions
+• Mixins
+• Custom Directives
+• Render Functions & JSX
+• Plugins
+• Filters
+• Single File Components
+• Unit Testing
+• TypeScript Support
+• Production Deployment
+• Routing
+• State Management
+ -- AND MORE --
