@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <navigation></navigation>
-    <router-view></router-view>
+    <navigation></navigation> <!-- Navigation component !-->
+    <router-view></router-view> <!-- Vue-router !-->
   </div>
 </template>
 
@@ -15,7 +15,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss"> // SCSS support added
 
 @import '~sweetalert2/src/variables';
 
@@ -23,6 +23,7 @@ $swal2-background: #191919;
 
 @import '~sweetalert2/src/sweetalert2';
 
+// Global css
 html{
   font-family: Helvetica;
   font-size: 100%;

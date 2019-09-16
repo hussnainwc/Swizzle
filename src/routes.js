@@ -1,5 +1,6 @@
 import VueRouter from "vue-router";
 
+// Declares all routes asynchronously so that components are lazy loaded (only loaded when needed)
 const routes=[{
   name:"/",
   path:"/",

@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "watch": "vue-cli-service build --watch --mode development",
-    "serve": "serve -s dist",
-    "build": "vue-cli-service build",
-    "lint": "standard"
+    "watch": "vue-cli-service build --watch --mode development", // Compiles code for development and recompiles on any change
+    "serve": "serve -s dist", // Serves compiled code from the dist directory
+    "build": "vue-cli-service build", // Builds for production
+    "lint": "standard" // CLeans the code
   },
   "dependencies": {
     "axios": "^0.19.0",
