@@ -11,9 +11,9 @@ Vue.component("auth",{
 
  <div v-center>
 
-   <transition name="component-fade" mode="out-in">
-     <keep-alive>
-     <component :is="newUser"></component>
+     <transition name="component-fade" mode="out-in"> <!-- transition between components -->
+     <keep-alive> <!-- Stores the component in cache -->
+     <component :is="newUser"></component> <!-- Dynamic components -->
      </keep-alive>
    </transition>
 
@@ -38,9 +38,21 @@ Vue.component("auth",{
     }
   },
   methods:{
+
+    /**
+      * Sets the Sign up form as the active component
+      * @param {}
+      * @return {null}
+      */
     signupForm(){
       this.newUser = "signup";
     },
+
+    /**
+      * Sets the Login form as the active component
+      * @param {}
+      * @return {null}
+      */
     loginForm(){
       this.newUser = "login";
     }
