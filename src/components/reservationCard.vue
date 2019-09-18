@@ -27,8 +27,8 @@ export default {
          this.movieDetials =  response.data
          this.$store.commit('set',this.movieDetials);
          this.$root.$data.tickets = this.movie.tickets;
+         this.$router.push({name:'movie'});
        });
-      this.$router.push({name:'movie'});
     },
     getImage(){
       return this.movie.movie.Poster;

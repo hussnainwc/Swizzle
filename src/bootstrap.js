@@ -3,7 +3,7 @@
 
 import Vue from 'vue' // Imports vue
 window.Vue = Vue
-Vue.config.productionTip = false
+Vue.config.productionTip = true
 
 import axios from 'axios' // Imports axios to make AJAX request
 window.axios = axios
@@ -21,13 +21,13 @@ import VueSweetalert2 from 'vue-sweetalert2'; // Vue support for Notification po
 import Swal from 'sweetalert2'
 Vue.use(VueSweetalert2);
 window.Swal = Swal
-window.Toast = Toast
 const Toast = Swal.mixin({
   toast: true,
   position: 'top-end',
   showConfirmButton: false,
   timer: 3000
-  });
+});
+window.Toast = Toast
 
 import VueProgressBar from 'vue-progressbar' // Progress bars
 Vue.use(VueProgressBar, {

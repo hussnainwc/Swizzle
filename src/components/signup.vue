@@ -34,22 +34,22 @@ export default {
   },
   methods:{
     signup(){
-            if(this.password != ''){
-      this.$Progress.start();
-      if(User.signup(this.username,this.password)){
-        EventBus.$emit('authorized',this.username);
-        this.$router.push({name:'/'});
-        this.$Progress.finish();
-        Toast.fire({type: 'success',title: 'Sign up Succesful'})
+      if(this.password != ''){
+        this.$Progress.start();
+        if(User.signup(this.username,this.password)){
+          EventBus.$emit('authorized',this.username);
+          this.$router.push({name:'/'});
+          this.$Progress.finish();
+          Toast.fire({type: 'success',title: 'Sign up Succesful'})
+        }
+        else{
+          this.$Progress.fail();
+          Toast.fire({type: 'error',title: 'Failed to Sign up'})
+        }
       }
       else{
-        this.$Progress.fail();
-        Toast.fire({type: 'error',title: 'Failed to Sign up'})
+        Toast.fire({type: 'error',title: 'Failed to sign up'})
       }
-    }
-    else{
-      Toast.fire({type: 'error',title: 'Failed to sign up'})
-    }
     }
   }
 }

@@ -25,7 +25,7 @@ Vue.component("home",{
   name: 'home',
   data(){
     return{
-      words:["joker","jaws","race","mission","hack"],
+      words:["car","jaws","race","mission","hack"],
       movies:{},
       index:9
     }

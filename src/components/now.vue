@@ -25,7 +25,7 @@ Vue.component("now",{
   name: 'now',
   data(){
     return{
-      words:["joker","jaws","race","mission","hack"],
+      words:["planes","flag","moon","pink","foot"],
       movies:{},
       index:9
     }

@@ -15,12 +15,6 @@ Vue.component("foot",{
     return{
 
     }
-  },
-  created(){
-    console.log("works");
-  },
-  methods:{
-
   }
 }
 </script>

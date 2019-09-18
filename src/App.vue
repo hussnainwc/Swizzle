@@ -2,6 +2,11 @@
   <div id="app">
     <navigation></navigation> <!-- Navigation component !-->
     <router-view>{{ greeting | catch("GREETINGS")}}</router-view> <!-- Vue-router !-->
+    <br>
+    <br>
+    <br>
+    <vue-progress-bar></vue-progress-bar>
+    <foot v-if="['/','now','soon'].includes($route.name)"></foot>
   </div>
 </template>
 

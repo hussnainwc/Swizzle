@@ -28,11 +28,12 @@ const store = new Vuex.Store({
     * @return {null}
     */
     set(state,movie){
-      state.movie.tittle = movie.Title,
-      state.movie.poster = movie.Poster,
-      state.movie.year = movie.Year,
-      state.movie.rating = movie.Ratings[1].Value,
-      state.movie.plot = movie.Plot
+      state.movie.Title = movie.Title,
+      state.movie.Poster = movie.Poster,
+      state.movie.Year = movie.Year,
+      state.movie.Rating = movie.Ratings[1].Value,
+      state.movie.Plot = movie.Plot
+      state.movie.imdbID = movie.imdbID
     },
 
     /**

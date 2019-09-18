@@ -25,7 +25,7 @@ Vue.component("movie",{
       <br>
       <br>
       <br>
-      <span v-if="numberOfTickets != ''" v-size="'20px'" v-color="'#ffffff'"> TICKETS : {{ numberOfTickets | catch("Tickets")}}</span>
+      <span v-if="this.path == '/reservations'" v-size="'20px'" v-color="'#ffffff'"> TICKETS : {{ numberOfTickets | catch("Tickets")}}</span>
       <br v-else>
       <br>
       <br>

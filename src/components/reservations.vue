@@ -35,6 +35,7 @@ export default {
   methods:{
     displayReservations(){
       this.movies = User.getReservation();
+      console.log(this.movies);
       this.$store.commit('setPath',this.$route.path);
     }
   }

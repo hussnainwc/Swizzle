@@ -25,7 +25,7 @@ Vue.component("soon",{
   name: 'soon',
   data(){
     return{
-      words:["joker","jaws","race","mission","hack"],
+      words:["insi","goal","war","space","right"],
       movies:{},
       index:9
     }
