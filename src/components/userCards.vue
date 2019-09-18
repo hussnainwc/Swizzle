@@ -3,7 +3,9 @@ Vue.component("userCards",{
 <template>
   <div v-center>
     <div class="creditCard">
-          <inline-credit-card-field v-model="card"></inline-credit-card-field>
+      <!-- V-model for two way data binding for forms -->
+      <!-- Inline credit card field is an external component used for this project -->
+      <inline-credit-card-field v-model="card"></inline-credit-card-field>
     </div>
 
     <input @click="addCard()" class="creditCard-button" type="button" id="addCARD" value="ADD THIS CARD">
@@ -17,7 +19,7 @@ export default {
 
   name: 'userCards',
   components: {
-    InlineCreditCardField: () => import('vue-credit-card-field/src/Components/InlineCreditCardField')
+    InlineCreditCardField: () => import('vue-credit-card-field/src/Components/InlineCreditCardField') // Async loaded
   },
   data(){
     return{
@@ -26,7 +28,8 @@ export default {
     }
   },
   created(){
-    let Card = this.$store.getters.getCard;
+    let Card = this.$store.getters.getCard; // Gets card from the store
+    // Sets has card boolean based on if user has a card
     if(Card.number == ""){
       this.hasCard = false;
     }
@@ -35,6 +38,14 @@ export default {
     }
   },
   methods:{
+    /**
+      * If validation passes
+      * If user doesn't have any card added
+      * Else asks user if they want to update card details
+      * Commits card to the store
+      * @param {}
+      * @return {null}
+      */
     addCard(){
       if(this.card.postalCode != ""){
         if(!this.hasCard){

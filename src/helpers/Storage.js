@@ -51,18 +51,33 @@ class Storage {
 
   }
 
+  /**
+    * Saves reservations made by the current user
+    * @param {reservation}
+    * @return {null}
+    */
   saveReservation(reservation){
 
     localStorage.setItem(this.getUser(),reservation);
 
   }
 
+  /**
+    * Returns reservations for the current user
+    * @param {}
+    * @return {reservation}
+    */
   getReservation(){
 
     return localStorage.getItem(this.getUser());
 
   }
 
+  /**
+    * Deletes the reservation of the current user
+    * @param {}
+    * @return {null}
+    */
   deleteReservation(){
 
     localStorage.removeItem(this.getUser());

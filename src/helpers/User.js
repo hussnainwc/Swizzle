@@ -38,6 +38,11 @@ class User{
     return true;
   }
 
+  /**
+    * Updates the current user's username and password
+    * @param {user,password}
+    * @return {true}
+    */
   update(user,password){
 
     var reservations = Storage.getReservation();
@@ -54,18 +59,33 @@ class User{
     return true;
   }
 
+  /**
+    * Logs out the current user
+    * @param {}
+    * @return {null}
+    */
   logout(){
 
     Storage.empty();
 
   }
 
+  /**
+    * Returns user's card details in masked version
+    * @param {number}
+    * @return {number}
+    */
   maskCard(number){
 
     return number.substr(0,5) + "XXXX " + "XXXX " + number.substr(15,19);
 
   }
 
+  /**
+    * Makes movie reservation for the current user
+    * @param {movie,tickets}
+    * @return {null}
+    */
   makeReservation(movie,tickets){
 
     let reservation = new Object();
@@ -90,12 +110,22 @@ class User{
 
   }
 
+  /**
+    * Returns current user's reservations in JSON
+    * @param {}
+    * @return {getReservation}
+    */
   getReservation(){
 
     return JSON.parse(Storage.getReservation());
 
   }
 
+  /**
+    * Deletes current user's reservation
+    * @param {movie}
+    * @return {null}
+    */
   deleteReservation(movie){
 
     var hasReservation = this.getReservation();

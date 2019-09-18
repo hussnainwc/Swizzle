@@ -3,12 +3,13 @@ Vue.component("now",{
 <template>
   <div>
     <section id="now-display">
+      <!-- V-once used for handling completely static content (handling edged cases) -->
       <h1 class="overlay" v-once>NOW SHOWING</h1>
       <br>
       <br>
       <div class="center-div">
         <div class="center-div-inline">
-          <movies :movies="movies" :index="index"></movies>
+          <movies :movies="movies" :index="index"></movies> <!-- Passing props -->
         </div>
       </div>
     </section>
@@ -20,20 +21,26 @@ Vue.component("now",{
 
   export default{
   components: {
-    movies: () => import("./movies")
+    movies: () => import("./movies") // Async component loading
   },
   name: 'now',
   data(){
     return{
       words:["planes","flag","moon","pink","foot"],
       movies:{},
-      index:9
+      index:9 // Number of movies to be displayed
     }
   },
   created(){
-    this.displayMovies();
+    this.displayMovies(); // Displays movies on created
   },
   methods:{
+    /**
+      * Queries end point with a random word from words array and assigns response to movies object
+      * Commits current path to store
+      * @param {}
+      * @return {null}
+      */
     displayMovies(){
       axios.get(" https://movie-database-imdb-alternative.p.rapidapi.com/?s="+ this.getString(),
       {headers:{"x-rapidapi-host": "movie-database-imdb-alternative.p.rapidapi.com",
@@ -43,6 +50,11 @@ Vue.component("now",{
           this.movies = response.data.Search;
         });
     },
+    /**
+      * Returns a random word from the words array
+      * @param {}
+      * @return {word}
+      */
     getString(){
       return this.words[Math.floor(Math.random() * (+4 - +0)) + +0];
     }

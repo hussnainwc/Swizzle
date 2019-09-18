@@ -3,6 +3,7 @@ Vue.component("foot",{
 <template>
   <div v-center>
       <footer v-center>
+        <!-- Router link acts as an a tag which directs user to linked path -->
         <router-link to="/faq">FAQ</router-link>
       </footer>
   </div>

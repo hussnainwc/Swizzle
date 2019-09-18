@@ -20,6 +20,11 @@ const filters = [
   Vue.filter('catch', function (value,prop) {
     return value ? value : "error displaying " + prop + " please try again later";
   }),
+  /**
+    * Acts as a percent fall back
+    * @param {value}
+    * @return {value}
+    */
   Vue.filter('percent', function (value,prop) {
     let Value = value.toString();
     if(Value.substring(Value.length - 1,Value.length) == "%"){
