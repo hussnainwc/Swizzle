@@ -3,11 +3,11 @@ Vue.component("login",{
 <template>
   <div v-center>
 
-    <form @submit.prevent="login"> <!-- Event modifier -->
+    <form @click="placeholder()" @submit.prevent="login"> <!-- Event modifier -->
       <!-- V-model for two way data binding for forms -->
-      <input class="login-input" type="text" name="username" autocomplete="off" v-model="username" placeholder="USER NAME"/>
+      <input @click="clear('username')" class="login-input" type="text" name="username" autocomplete="off" v-model="username" placeholder="USER NAME"/>
       <br>
-      <input class="login-input" type="password" name="password" autocomplete="off" v-model="password" placeholder="PASSWORD"/>
+      <input @click="clear('password')" class="login-input" type="password" name="password" autocomplete="off" v-model="password" placeholder="PASSWORD"/>
       <br>
       <input class="login-button" type="submit" name="submit" value="LOGIN"/>
     </form>
@@ -23,8 +23,8 @@ export default {
   name: 'login',
   data(){
     return{
-      username:'',
-      password:''
+      username:'USERNAME',
+      password:'PASSWORD'
     }
   },
   methods:{
@@ -48,6 +48,35 @@ export default {
         this.$Progress.fail();
         Toast.fire({type: 'error',title: 'Failed to Login'})
       }
+    },
+    /**
+      * Puts placeholder back for fields if empty
+      * @param {inputField}
+      * @return {null}
+      */
+    placeholder(){
+      var keys = Object.keys(this.$data);
+      var names = Object.keys(this.$data);
+      for (var i = 0; i < keys.length - 1; i++) {
+        if(this[keys[i]] == "" && names[i] != this.clicked){
+          this[keys[i]] = names[i].toUpperCase();
+        }
+      }
+    },
+    /**
+      * Clears the field clicked on except if it's input from user
+      * placeholders didnt seem to work for chrome
+      * @param {inputField}
+      * @return {null}
+      */
+    clear(inputField){
+      var keys = Object.keys(this.$data);
+      for (var i = 0; i < keys.length; i++) {
+        if(this[inputField] == keys[i].toUpperCase()){
+          this[inputField] = "";
+        }
+      }
+      this.clicked =  inputField;
     }
   }
 }

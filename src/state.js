@@ -26,16 +26,21 @@ const store = new Vuex.Store({
     * Stores the movie selected in state
     * @param {state,movie}
     * @return {null}
+    * @throws {e}
     */
     set(state,movie){
-      state.movie.Title = movie.Title,
-      state.movie.Poster = movie.Poster,
-      state.movie.Year = movie.Year,
-      state.movie.Rating = movie.Ratings[1].Value,
-      state.movie.Plot = movie.Plot
-      state.movie.imdbID = movie.imdbID
+      try {
+          state.movie.Title = movie.Title,
+          state.movie.Poster = movie.Poster,
+          state.movie.Year = movie.Year,
+          state.movie.Rating = movie.Ratings[1].Value,
+          state.movie.Plot = movie.Plot
+          state.movie.imdbID = movie.imdbID
+        }
+       catch (e) {
+         
+      }
     },
-
     /**
     * Stores the path the movie was selected from such as from Now Showing, Coming Soon and Home
     * @param {state,path}

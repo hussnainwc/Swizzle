@@ -3,17 +3,17 @@ Vue.component("signup",{
 <template>
   <div v-center>
 
-    <form @submit.prevent="signup"> <!-- Event modifier -->
+    <form @click="placeholder()" @submit.prevent="signup"> <!-- Event modifier -->
       <!-- V-model for two way data binding for forms -->
-      <input class="signup-input" type="text" name="username" autocomplete="off" v-model="username" placeholder="USER NAME"/>
+      <input @click="clear('username')" class="signup-input" type="text" name="username" autocomplete="off" v-model="username" placeholder="USER NAME"/>
       <br>
-      <input class="signup-input" type="password" name="password" autocomplete="off" v-model="password" placeholder="PASSWORD"/>
+      <input @click="clear('password')" class="signup-input" type="password" name="password" autocomplete="off" v-model="password" placeholder="PASSWORD"/>
       <br>
-      <input type="text" class="signup-input" autocomplete="off" placeholder="AGE"/>
+      <input @click="clear('age')" type="text" v-model="age" class="signup-input" autocomplete="off" placeholder="AGE"/>
       <br>
-      <input type="text" class="signup-input" autocomplete="off" placeholder="GENDER"/>
+      <input @click="clear('gender')" type="text" v-model="gender" class="signup-input" autocomplete="off" placeholder="GENDER"/>
       <br>
-      <input type="email" class="signup-input" autocomplete="off" placeholder="EMAIL"/>
+      <input @click="clear('email')" type="email" v-model="email" class="signup-input" autocomplete="off" placeholder="EMAIL"/>
       <br>
       <input class="signup-button" type="submit" name="submit" value="SIGN UP"/>
     </form>
@@ -29,8 +29,12 @@ export default {
   name: 'signup',
   data(){
     return{
-      username:'',
-      password:''
+      username:'USERNAME',
+      password:'PASSWORD',
+      age:'AGE',
+      gender:'GENDER',
+      email:'EMAIL',
+      clicked:""
     }
   },
   methods:{
@@ -43,22 +47,52 @@ export default {
       * @return {null}
       */
     signup(){
-      if(this.password != ''){
-        this.$Progress.start();
-        if(User.signup(this.username,this.password)){
-          EventBus.$emit('authorized',this.username);
-          this.$router.push({name:'/'});
-          this.$Progress.finish();
-          Toast.fire({type: 'success',title: 'Sign up Succesful'})
-        }
-        else{
-          this.$Progress.fail();
-          Toast.fire({type: 'error',title: 'Failed to Sign up'})
-        }
+      this.$Progress.start();
+      if(User.signup(this.username,this.password)){
+        EventBus.$emit('authorized',this.username);
+        this.$router.push({name:'/'});
+        this.$Progress.finish();
+        Toast.fire({type: 'success',title: 'Sign up Succesful'})
       }
       else{
-        Toast.fire({type: 'error',title: 'Failed to sign up'})
+        this.$Progress.fail();
+        Swal.fire({
+          title: 'Error',
+          text:'Username cannot be longer than 10 characters or you left the password field empty',
+          type: 'error',
+          confirmButtonColor: '#3085d6',
+          confirmButtonText: 'OK',
+        })
       }
+    },
+    /**
+      * Puts placeholder back for fields if empty
+      * @param {inputField}
+      * @return {null}
+      */
+    placeholder(){
+      var keys = Object.keys(this.$data);
+      var names = Object.keys(this.$data);
+      for (var i = 0; i < keys.length - 1; i++) {
+        if(this[keys[i]] == "" && names[i] != this.clicked){
+          this[keys[i]] = names[i].toUpperCase();
+        }
+      }
+    },
+    /**
+      * Clears the field clicked on except if it's input from user
+      * placeholders didnt seem to work for chrome
+      * @param {inputField}
+      * @return {null}
+      */
+    clear(inputField){
+      var keys = Object.keys(this.$data);
+      for (var i = 0; i < keys.length; i++) {
+        if(this[inputField] == keys[i].toUpperCase()){
+          this[inputField] = "";
+        }
+      }
+      this.clicked =  inputField;
     }
   }
 }

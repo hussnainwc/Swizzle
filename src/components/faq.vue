@@ -122,5 +122,38 @@ Vue.component("faq",{
   outline: none;
 }
 
+@media only screen and (max-width:1326px) {
+
+    .faq {
+      background-color: black;
+      color: white;
+      cursor: pointer;
+      padding: 18px;
+      width: 100%;
+      border: none;
+      text-align: center;
+      outline: none;
+      font-size: 20px;
+      transition: 0.4s;
+    }
+
+}
+
+@media only screen and (max-width:1119px) {
+
+    .faq {
+      background-color: black;
+      color: white;
+      cursor: pointer;
+      padding: 18px;
+      width: 100%;
+      border: none;
+      text-align: center;
+      outline: none;
+      font-size: 15px;
+      transition: 0.4s;
+    }
+
+  }
 
 </style>

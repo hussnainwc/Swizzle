@@ -29,6 +29,10 @@ class User{
     */
   signup(user,password){
 
+    if(user.length > 10 || password.length == 0){
+      return false
+    }
+
     if (this.loggedIn()){
       Storage.empty();
     }

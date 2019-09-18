@@ -29,6 +29,7 @@ Vue.component("navigation",{
         </nav>
       </div>
     </header>
+    <br>
   </div>
 </template>
 `
@@ -270,23 +271,23 @@ margin:0;
 }
 
 
-@media only screen and (max-width:1330px) {
+@media only screen and (max-width:1368px) {
   .showing-nav-li{
     margin-top: 35px;
     float:right;
     display:inline;
-    padding: 0 30px 0 30px;
+    padding: 0 25px 0 25px;
   }
 
   .search-login-nav-li{
     margin-top: 15.5px;
     float:left;
     display:inline;
-    padding: 0 30px 0 30px;
+    padding: 0 25px 0 25px;
   }
 }
 
-@media only screen and (max-width:1140px) {
+@media only screen and (max-width:1118px) {
 
   #logo{
     min-height:80px;
@@ -342,7 +343,7 @@ margin:0;
     margin-top: 15.5px;
     float:left;
     display:inline;
-    padding: 0px 30px 0 30px;
+    padding: 0px 25px 0 25px;
   }
 
   .search-login-nav-li button{
@@ -464,7 +465,7 @@ margin:0;
       margin-top: 15.5px;
       float:left;
       display:inline;
-      padding: 0px 30px 0 30px;
+      padding: 0px 25px 0 25px;
     }
 
     .search-login-nav-li button{
@@ -515,7 +516,7 @@ margin:0;
 
   }
 
-  @media only screen and (max-width:734px) {
+  @media only screen and (max-width:757px) {
 
     .showing-nav-li{
       margin-top: 35px;
@@ -571,7 +572,7 @@ margin:0;
 
   }
 
-  @media only screen and (max-width:468px) {
+  @media only screen and (max-width:478px) {
 
     #logo{
       min-height:60px;

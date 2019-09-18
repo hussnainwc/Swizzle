@@ -324,13 +324,13 @@ height:auto;
 
 .button{
 margin:20px;
-width:320px;
+width:250px;
 height: 80px;
 border-radius: 10px;
 border: 1px solid #ffffff;
 color: #A5FFEE;
 padding:5px;
-font-size: 30px;
+font-size: 20px;
 cursor: pointer;
 outline: none;
 background-color: #A5A5A5;

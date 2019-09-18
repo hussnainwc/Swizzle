@@ -1,11 +1,14 @@
 Vue.component("reservationCard",{
 `
 <template>
-  <div @click="Movie()" class="clickable container center-div-inline">
-    <span class="tittle">{{this.Title}}</span>
+  <div>
+    <div @click="Movie()" class="clickable container center-div-inline">
+      <span class="tittle">{{this.Title}}</span>
+      <br>
+      <br>
+      <img class="poster" :src="getImage()" alt="Poster">
+    </div>
     <br>
-    <br>
-    <img class="poster" :src="getImage()" alt="Poster">
   </div>
 </template>
 `
@@ -37,7 +40,8 @@ export default {
        });
     },
     /**
-      * Returns the poster of the movie
+      * Returns the
+  float:left;poster of the movie
       * @param {}
       * @return {poster}
       */
@@ -54,7 +58,6 @@ export default {
   margin:50px 15px 50px 15px;
   height:500px;
   width:100%;
-  float:left;
 }
 
 .poster{
@@ -78,7 +81,7 @@ export default {
   .container{
     margin:50px 15px 50px 15px;
     height:700px;
-    width:31%;
+    width:100%;
   }
 
   .poster{
@@ -94,7 +97,7 @@ export default {
     text-align: center;
     margin:50px 15px 50px 15px;
     height:400px;
-    width:28%;
+    width:100%;
   }
 
   .poster{
@@ -110,7 +113,7 @@ export default {
     text-align: center;
     margin:30px 15px 30px 15px;
     height:250px;
-    width:22%;
+    width:50%;
   }
 
   .poster{
@@ -137,7 +140,7 @@ export default {
     text-align: center;
     margin:0px 15px 70px 15px;
     height:150px;
-    width:22%;
+    width:30%;
   }
 
   .poster{
@@ -164,7 +167,7 @@ export default {
     text-align: center;
     margin:0px 35px 70px 35px;
     height:150px;
-    width:22%;
+    width:50%;
   }
 
   .poster{
