@@ -1,12 +1,18 @@
 # Swizzle
 
+# Demo 
+
+A live demo version is running at http://165.22.99.135:5000/#/
+
+Run the app on the link given if you do not wish to install
+
 # Installation
 
 Install Node.js
 
 Clone this repository
 
-cd to repository
+cd Swizzle/
 
 Enter the following commands:
 
