@@ -38,7 +38,7 @@ export default {
 
 @import '~sweetalert2/src/variables';
 
-$swal2-background: #191919;
+$swal2-background: #191919 !important;
 
 @import '~sweetalert2/src/sweetalert2';
 

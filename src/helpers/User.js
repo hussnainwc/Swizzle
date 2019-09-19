@@ -29,7 +29,7 @@ class User{
     */
   signup(user,password){
 
-    if(user.length > 10 || password.length == 0){
+    if(user.length > 10 || user.length == 0 || password.length == 0 || user == "USERNAME" || password == "PASSWORD"){
       return false
     }
 

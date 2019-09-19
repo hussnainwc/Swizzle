@@ -37,8 +37,9 @@ const store = new Vuex.Store({
           state.movie.Plot = movie.Plot
           state.movie.imdbID = movie.imdbID
         }
+        // Only throws an error if AJAX request is slower the system. The methods gets called again once AJAX request is complete
        catch (e) {
-         
+
       }
     },
     /**
