@@ -10,7 +10,11 @@ cd to repository
 
 Enter the following commands:
 
-npm Install
+npm install
+
+npm run lint
+
+npm run test
 
 npm run build
 
@@ -25,6 +29,8 @@ serve -- Serves the dist directory
 build -- Compiles code for production
 
 lint -- Cleans code to a set standard
+
+test -- Runs the tests written and reports back to the user
 
 # Documentation
 
